@@ -1,0 +1,25 @@
+{
+    "name": "vertera-dev/translation-client-code",
+    "description": "Core of translation client",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmytro Dmytruk",
+            "email": "d.dmytruk@icloud.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~7.2",
+        "vertera-dev/translation-loader-code": "dev-master",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "VerteraDev\\TranslationClient\\": "src/"
+        }
+    }
+}
