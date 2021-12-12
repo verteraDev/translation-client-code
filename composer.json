@@ -12,7 +12,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.2||^8.1",
+        "php": "^7.2||^8.0",
         "vertera-dev/translation-loader-code": "dev-master",
         "ext-curl": "*",
         "ext-json": "*"
