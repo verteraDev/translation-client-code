@@ -123,7 +123,7 @@ class TranslationClient
      */
     public function importTranslations(TranslationManager $manager, TranslationReaderAbstract $reader, TranslationWriterAbstract $writer, string $pathToImportFile): void
     {
-        $processId = $this->importSendRequest();
+        $processId = $this->importSendRequest($manager->getLanguages());
         // Проверка выполнения экспорта переводов
         $executionTime = 0;
         while (true) {
@@ -152,14 +152,17 @@ class TranslationClient
      * @return int ID процесса
      * @throws TranslationClientException
      */
-    protected function importSendRequest(): int
+    protected function importSendRequest(array $languages): int
     {
         $params = ['fields' => 'id'];
         $headers = [
             "Access-Token: {$this->accessToken}",
             "X-App-Token: {$this->applicationToken}"
         ];
-        $responseData = $this->sendRequest($this->importRequestMethod, 'post', $params, $headers);
+        $data = [
+            'languages' => implode(',', $languages)
+        ];
+        $responseData = $this->sendRequest($this->importRequestMethod, 'post', $params, $headers, $data);
 
         if (isset($responseData['data']['id'])) {
             return $responseData['data']['id'];
